@@ -6,9 +6,50 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('rentTypeFilter').addEventListener('change', filterRentCards);
     document.getElementById('rentBedroomFilter').addEventListener('change', filterRentCards);
     document.getElementById('rentFurnishingFilter').addEventListener('change', filterRentCards);
-    document.getElementById('rentLocationFilter').addEventListener('change', filterRentCards);
+    document.getElementById('rentLocationFilter').addEventListener('input', filterRentCards);
     document.getElementById('rentMinPrice').addEventListener('change', filterRentCards);
     document.getElementById('rentMaxPrice').addEventListener('change', filterRentCards);
+
+    // Location search auto-suggestion
+    const locationSearch = document.getElementById('rentLocationFilter');
+    const suggestionsContainer = document.getElementById('suggestionsContainer');
+    const locationSearchContainer = document.getElementById('locationSearchContainer');
+
+    if (locationSearch) {
+        const locations = [...new Set(properties.map(p => p.location.split(', ')[1]))];
+
+        locationSearch.addEventListener('input', () => {
+            const inputText = locationSearch.value.toLowerCase();
+            suggestionsContainer.innerHTML = '';
+            if (inputText.length > 0) {
+                const suggestions = locations.filter(loc => loc.toLowerCase().startsWith(inputText));
+                if (suggestions.length > 0) {
+                    suggestions.forEach(s => {
+                        const suggestionItem = document.createElement('div');
+                        suggestionItem.className = 'suggestion-item';
+                        suggestionItem.textContent = s;
+                        suggestionItem.onclick = () => {
+                            locationSearch.value = s;
+                            suggestionsContainer.style.display = 'none';
+                            filterRentCards();
+                        };
+                        suggestionsContainer.appendChild(suggestionItem);
+                    });
+                    suggestionsContainer.style.display = 'block';
+                } else {
+                    suggestionsContainer.style.display = 'none';
+                }
+            } else {
+                suggestionsContainer.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!locationSearchContainer.contains(e.target)) {
+                suggestionsContainer.style.display = 'none';
+            }
+        });
+    }
 });
 
 function filterRentCards() {
