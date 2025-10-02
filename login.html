@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Ghar4Rent</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background: #f7faff; font-family: 'Segoe UI', Arial, sans-serif; }
+        .login-container {
+            max-width: 340px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 24px rgba(37,99,235,0.10);
+            padding: 32px 28px 24px 28px;
+        }
+        .login-container h2 {
+            color: #1976d2;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+        .login-container button {
+            width: 100%;
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        .login-container .error-msg {
+            color: #b71c1c;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .login-container .register-link {
+            display: block;
+            text-align: center;
+            margin-top: 16px;
+            color: #1976d2;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav style="max-width:340px;margin:24px auto 0 auto;display:flex;justify-content:space-between;gap:8px;">
+        <a href="index.html" style="color:#1976d2;text-decoration:none;font-weight:500;">Home</a>
+        <a href="buy.html" style="color:#1976d2;text-decoration:none;font-weight:500;">Buy</a>
+        <a href="rent.html" style="color:#1976d2;text-decoration:none;font-weight:500;">Rent</a>
+        <a href="commercial.html" style="color:#1976d2;text-decoration:none;font-weight:500;">Commercial</a>
+        <a href="post-property.html" style="color:#1976d2;text-decoration:none;font-weight:500;">Post Property</a>
+        <a href="register.html" style="color:#388e3c;text-decoration:none;font-weight:500;">Register</a>
+    </nav>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm" autocomplete="off">
+            <input type="tel" id="loginMobile" name="loginMobile" placeholder="Mobile Number" pattern="[0-9]{10}" maxlength="10" required aria-label="Mobile Number" autocomplete="tel">
+            <input type="password" id="loginPassword" name="loginPassword" placeholder="Password" required>
+            <div class="error-msg" id="loginMsg"></div>
+            <button type="submit">Login</button>
+        </form>
+        <a class="register-link" href="register.html">New user? Register here</a>
+    </div>
+    <script>
+    document.getElementById('loginForm').onsubmit = function(e) {
+        e.preventDefault();
+        const mobile = document.getElementById('loginMobile').value.trim();
+        const password = document.getElementById('loginPassword').value;
+        let users = JSON.parse(localStorage.getItem('users') || '{}');
+        if (!users[mobile] || users[mobile].password !== password) {
+            document.getElementById('loginMsg').textContent = 'Invalid mobile or password.';
+            return;
+        }
+        localStorage.setItem('currentUser', mobile);
+        document.getElementById('loginMsg').textContent = 'Login successful! Redirecting...';
+        setTimeout(function() {
+            window.location.href = 'post-property.html';
+        }, 1200);
+    };
+    </script>
+</body>
+</html>

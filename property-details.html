@@ -1,0 +1,59 @@
+            .logo {
+                width: 60px;
+                height: 60px;
+                margin-right: 10px;
+                vertical-align: middle;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid #eee;
+            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details - Ghar4Rent</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="View detailed information, images, and location for this property on Ghar4Rent.">
+</head>
+<body>
+    <header>
+                <a href="index.html"><img src="logo.jpg" alt="Ghar4Rent Logo" class="logo"></a>
+                <a href="index.html"><img src="logo.jpg" alt="Ghar4Rent Logo" class="logo"></a>
+        <a href="index.html"><img src="assets/logo.jpg" alt="Ghar4Rent Logo" class="logo" style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid #eee;margin-right:12px;"></a>
+        <button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('nav').classList.toggle('open')">&#9776;</button>
+        <nav>
+            <a href="index.html"><i class="fa-solid fa-house-user"></i> Home</a>
+            <a href="buy.html"><i class="fa-solid fa-cart-shopping"></i> Buy</a>
+            <a href="rent.html"><i class="fa-solid fa-house"></i> Rent</a>
+            <a href="commercial.html"><i class="fa-solid fa-building"></i> Commercial</a>
+            <a href="post-property.html" id="menuPostProperty"><i class="fa-solid fa-plus"></i> Post Property Free</a>
+            <a href="#contact"><i class="fa-solid fa-phone"></i> Contact</a>
+        </nav>
+    </header>
+    <section class="property-detail">
+        <h2>2 BHK Apartment in Andheri</h2>
+        <div class="gallery">
+            <img src="assets/rent.jpg" alt="Property Image 1">
+            <img src="assets/about.jpg" alt="Property Image 2">
+        </div>
+        <p><strong>Location:</strong> Andheri, Mumbai</p>
+        <p><strong>Type:</strong> For Rent</p>
+        <p><strong>Price:</strong> ₹35,000/month</p>
+        <p><strong>Details:</strong> Spacious flat with amenities, near metro station.</p>
+        <div class="map">
+            <iframe src="https://www.google.com/maps?q=Andheri+Mumbai&output=embed" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <form class="inquiry-form">
+            <h3>Send Inquiry</h3>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2025 Ghar4Rent. All rights reserved.</p>
+    </footer>
+</body>
+</html>

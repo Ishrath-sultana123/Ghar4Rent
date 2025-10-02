@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghar4Rent - Real Estate Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <meta name="description" content="Ghar4Rent is your trusted partner for renting and buying homes, flats, and commercial properties. Connect with us for professional real estate services.">
+    <meta name="keywords" content="rent, buy, real estate, Mumbai, flats, homes, property, Ghar4Rent">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Ghar4Rent",
+      "url": "https://ghar4rent.com",
+    "logo": "logo.jpg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9876543210",
+        "contactType": "customer service"
+        <a href="index.html"><img src="assets/logo.jpg" alt="Ghar4Rent Logo" class="logo" style="border-radius:50%;"></a>
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "123 Business Avenue",
+        "addressLocality": "Mumbai",
+        "addressCountry": "IN"
+      }
+    }
+    </script>
+    <style>
+        /* Subtle animations for cards and buttons */
+        .category-card, .blog-card, .cta-btn, button, .property-search button {
+            transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s, background 0.18s, color 0.18s;
+        }
+        .category-card:hover, .blog-card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 6px 24px #1976d233;
+        }
+        .cta-btn:hover, button:hover, .property-search button:hover {
+            background: #1251a3 !important;
+            color: #fff !important;
+            transform: scale(1.04);
+        }
+        .hero > div {
+            animation: fadeInHero 1.2s cubic-bezier(.4,2,.6,1);
+        }
+        @keyframes fadeInHero {
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            to { opacity: 1; transform: none; }
+        }
+        /* Responsive adjustments for mobile */
+        @media (max-width: 700px) {
+            .hero > div {
+                padding: 1.2rem 0.5rem;
+            }
+            .featured-categories > div, .recent-blogs > div, .testimonials-trust > div {
+                flex-direction: column !important;
+                gap: 18px !important;
+            }
+            .category-card, .blog-card {
+                min-width: 90vw !important;
+                max-width: 98vw !important;
+            }
+            .property-search form {
+                flex-direction: column !important;
+                gap: 10px !important;
+            }
+            footer > div {
+                flex-direction: column !important;
+                gap: 18px !important;
+                align-items: flex-start !important;
+            }
+        }
+        /* Optimize images for fast loading */
+        img, .hero {
+            image-rendering: auto;
+        }
+        img[loading="lazy"] {
+            filter: blur(2px);
+            transition: filter 0.3s;
+        }
+        img[loading="lazy"].loaded {
+            filter: none;
+        }
+            .logo {
+                width: 60px;
+                height: 60px;
+                margin-right: 10px;
+                vertical-align: middle;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid #eee;
+            }
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #fff;
+            box-shadow: 0 2px 12px #1976d21a;
+            padding: 0 0 0 0;
+            transition: box-shadow 0.2s;
+        }
+        header .logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #eee;
+        }
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            justify-content: flex-end;
+            background: none;
+            font-size: 1.08em;
+        }
+        nav a {
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 18px;
+            border-radius: 6px;
+            transition: background 0.15s, color 0.15s;
+        }
+        nav a:hover, nav a.active {
+            background: #e3eafc;
+            color: #0d47a1;
+        }
+        .menu-toggle {
+            display: none;
+        }
+        @media (max-width: 800px) {
+            nav {
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #fff;
+                width: 200px;
+                box-shadow: 0 2px 12px #1976d21a;
+                display: none;
+            }
+            nav.open {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 2rem;
+                color: #1976d2;
+                position: absolute;
+                right: 16px;
+                top: 10px;
+                cursor: pointer;
+            }
+        }
+      /* SVG section divider styles */
+      .divider {
+        display: block;
+        width: 100%;
+        margin: 0;
+        line-height: 0;
+      }
+      .divider { margin-bottom: -2px; }
+      .stats {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        margin: 2rem 0;
+      }
+      .stat {
+        background: var(--soft-blue);
+        border-radius: 12px;
+        box-shadow: 0 1px 8px rgba(37,99,235,0.08);
+        padding: 1rem 2rem;
+        text-align: center;
+        min-width: 120px;
+      }
+      .counter {
+        font-size: 2.2rem;
+        font-weight: bold;
+        color: var(--primary-blue);
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      .testimonials-slider {
+        position: relative;
+        max-width: 600px;
+        margin: 2rem auto 0 auto;
+        min-height: 80px;
+      }
+      .testimonial {
+        opacity: 0;
+        position: absolute;
+        left: 0; right: 0;
+        transition: opacity 0.7s;
+        font-size: 1.1rem;
+        color: var(--accent-blue);
+        background: var(--soft-blue);
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 1px 8px rgba(37,99,235,0.08);
+      }
+      .testimonial.active {
+        opacity: 1;
+        position: relative;
+      }
+      .floating-chat {
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        z-index: 999;
+        animation: bounceIn 1.2s;
+      }
+      @keyframes bounceIn {
+        0% { transform: scale(0.5); opacity: 0; }
+        60% { transform: scale(1.1); opacity: 1; }
+        80% { transform: scale(0.95); }
+        100% { transform: scale(1); }
+      }
+    </style>
+</head>
+<body>
+    <header data-aos="fade-down">
+    <a href="index.html"><img src="assets/logo.jpg" alt="Ghar4Rent Logo" class="logo"></a>
+    <button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('nav').classList.toggle('open')">&#9776;</button>
+    <nav>
+    <a href="index.html"><i class="fa-solid fa-house-user"></i> Home</a>
+    <a href="buy.html"><i class="fa-solid fa-cart-shopping"></i> Buy</a>
+    <a href="rent.html"><i class="fa-solid fa-house"></i> Rent</a>
+    <a href="commercial.html"><i class="fa-solid fa-building"></i> Commercial</a>
+    <a href="post-property.html" id="menuPostProperty"><i class="fa-solid fa-plus"></i> Post Property Free</a>
+    <a href="#contact"><i class="fa-solid fa-phone"></i> Contact</a>
+    </nav>
+    </header>
+        <!-- Hero Section -->
+        <section class="hero" style="background: url('assets/consult.jpg') center/cover no-repeat; min-height: 60vh; display: flex; align-items: center; justify-content: center; position: relative;">
+                    <div style="background: rgba(0,0,0,0.45); padding: 2.5rem 2rem; border-radius: 18px; box-shadow: 0 4px 32px rgba(0,0,0,0.10); text-align: center; max-width: 600px; width: 100%;">
+                        <!-- Styled logo for Hero card -->
+                        <img src="assets/logo.jpg" alt="Ghar4Rent Logo" class="logo" style="margin-bottom: 1rem; width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; box-shadow: 0 2px 12px #1976d255; background: #fff;">
+            <h1 style="color: #fff; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">Find Your Dream Home or Post Your Property Free</h1>
+            <p style="color: #f3f3f3; font-size: 1.2rem; margin-bottom: 2rem;">Ghar4Rent connects you with the best properties for rent and sale in your city. Hassle-free, verified, and professional real estate solutions.</p>
+            <a href="post-property.html" class="cta-btn" style="background: #1976d2; color: #fff; padding: 1rem 2.5rem; border-radius: 8px; font-size: 1.2rem; font-weight: 600; text-decoration: none; box-shadow: 0 2px 8px rgba(25,118,210,0.15); transition: background 0.2s;">Post Property Now</a>
+          </div>
+        </section>
+        <!-- End Hero Section -->
+        <!-- Featured Categories Section -->
+        <section class="featured-categories" style="background:#f8fafc;padding:40px 0 24px 0;">
+            <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:center;">
+                <a href="buy.html" class="category-card" style="background:#fff;border-radius:14px;box-shadow:0 2px 12px #1976d21a;padding:24px 32px;text-align:center;min-width:200px;flex:1;max-width:220px;text-decoration:none;transition:transform 0.15s;">
+                    <img src="assets/buy.jpg" alt="Buy" style="width:60px;height:60px;border-radius:50%;object-fit:cover;margin-bottom:12px;">
+                    <h3 style="color:#1976d2;font-size:1.3rem;margin-bottom:8px;">Buy</h3>
+                    <p style="color:#444;font-size:1rem;">Find your dream home from our verified listings.</p>
+                </a>
+                <a href="rent.html" class="category-card" style="background:#fff;border-radius:14px;box-shadow:0 2px 12px #1976d21a;padding:24px 32px;text-align:center;min-width:200px;flex:1;max-width:220px;text-decoration:none;transition:transform 0.15s;">
+                    <img src="assets/rent.jpg" alt="Rent" style="width:60px;height:60px;border-radius:50%;object-fit:cover;margin-bottom:12px;">
+                    <h3 style="color:#1976d2;font-size:1.3rem;margin-bottom:8px;">Rent</h3>
+                    <p style="color:#444;font-size:1rem;">Browse rental properties for every budget.</p>
+                </a>
+                <a href="commercial.html" class="category-card" style="background:#fff;border-radius:14px;box-shadow:0 2px 12px #1976d21a;padding:24px 32px;text-align:center;min-width:200px;flex:1;max-width:220px;text-decoration:none;transition:transform 0.15s;">
+                    <img src="assets/consult.jpg" alt="Commercial" style="width:60px;height:60px;border-radius:50%;object-fit:cover;margin-bottom:12px;">
+                    <h3 style="color:#1976d2;font-size:1.3rem;margin-bottom:8px;">Commercial</h3>
+                    <p style="color:#444;font-size:1rem;">Explore offices, shops, and business spaces.</p>
+                </a>
+            </div>
+        </section>
+        <!-- End Featured Categories Section -->
+        <!-- Platform Benefits Section -->
+        <section class="platform-benefits" style="background:#e3eafc;padding:32px 0 16px 0;">
+            <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:center;align-items:center;">
+                <div style="flex:1;min-width:220px;text-align:center;">
+                    <i class="fa-solid fa-badge-check" style="font-size:2.5rem;color:#1976d2;margin-bottom:10px;"></i>
+                    <h3 style="color:#1976d2;font-size:1.2rem;margin-bottom:8px;">100% Verified Listings</h3>
+                    <p style="color:#444;font-size:1rem;">All properties are checked for authenticity and accuracy.</p>
+                </div>
+                <div style="flex:1;min-width:220px;text-align:center;">
+                    <i class="fa-solid fa-bullhorn" style="font-size:2.5rem;color:#1976d2;margin-bottom:10px;"></i>
+                    <h3 style="color:#1976d2;font-size:1.2rem;margin-bottom:8px;">Post Your Property Free</h3>
+                    <p style="color:#444;font-size:1rem;">No hidden charges for your first post. Get genuine leads fast.</p>
+                </div>
+                <div style="flex:1;min-width:220px;text-align:center;">
+                    <i class="fa-solid fa-headset" style="font-size:2.5rem;color:#1976d2;margin-bottom:10px;"></i>
+                    <h3 style="color:#1976d2;font-size:1.2rem;margin-bottom:8px;">Expert Support</h3>
+                    <p style="color:#444;font-size:1rem;">Our team is here to help you at every step of your property journey.</p>
+                </div>
+            </div>
+        </section>
+        <!-- End Platform Benefits Section -->
+        <!-- Property Search Bar removed as requested -->
+        <!-- End Property Search Bar -->
+        <!-- Testimonials & Trust Badges -->
+        <section class="testimonials-trust" style="background:#fff;padding:40px 0 24px 0;">
+            <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:center;align-items:flex-start;">
+                <div style="flex:2;min-width:260px;max-width:420px;">
+                    <h2 style="color:#1976d2;font-size:1.5rem;margin-bottom:18px;">What Our Users Say</h2>
+                    <div style="background:#f8fafc;border-radius:12px;padding:18px 22px;margin-bottom:16px;box-shadow:0 2px 8px #1976d21a;">
+                        <p style="font-size:1.1rem;color:#333;margin-bottom:8px;">“Ghar4Rent made it so easy to find my new apartment. The listings were genuine and the support was excellent!”</p>
+                        <span style="color:#1976d2;font-weight:600;">— Priya S., Mumbai</span>
+                    </div>
+                    <div style="background:#f8fafc;border-radius:12px;padding:18px 22px;box-shadow:0 2px 8px #1976d21a;">
+                        <p style="font-size:1.1rem;color:#333;margin-bottom:8px;">“I posted my property for free and got genuine leads within days. Highly recommended!”</p>
+                        <span style="color:#1976d2;font-weight:600;">— Rajesh K., Thane</span>
+                    </div>
+                </div>
+                <div style="flex:1;min-width:220px;max-width:320px;text-align:center;align-self:center;">
+                    <h3 style="color:#1976d2;font-size:1.1rem;margin-bottom:16px;">Trusted By Thousands</h3>
+                    <div style="display:flex;gap:22px;justify-content:center;align-items:center;flex-wrap:wrap;">
+                        <div style="display:flex;flex-direction:column;align-items:center;">
+                            <i class="fa-solid fa-shield-halved" style="font-size:2.3rem;color:#1976d2;"></i>
+                            <span style="font-size:0.98rem;color:#1976d2;font-weight:600;margin-top:4px;">100% Verified</span>
+                        </div>
+                        <div style="display:flex;flex-direction:column;align-items:center;">
+                            <i class="fa-solid fa-user-check" style="font-size:2.3rem;color:#1976d2;"></i>
+                            <span style="font-size:0.98rem;color:#1976d2;font-weight:600;margin-top:4px;">Verified Listings</span>
+                        </div>
+                        <div style="display:flex;flex-direction:column;align-items:center;">
+                            <i class="fa-solid fa-lock" style="font-size:2.3rem;color:#1976d2;"></i>
+                            <span style="font-size:0.98rem;color:#1976d2;font-weight:600;margin-top:4px;">Secure Platform</span>
+                        </div>
+                        <div style="display:flex;flex-direction:column;align-items:center;">
+                            <i class="fa-solid fa-thumbs-up" style="font-size:2.3rem;color:#1976d2;"></i>
+                            <span style="font-size:0.98rem;color:#1976d2;font-weight:600;margin-top:4px;">Trusted Service</span>
+                        </div>
+                    </div>
+                    <div style="margin-top:12px;color:#555;font-size:0.98rem;">Thousands of happy customers across India</div>
+                </div>
+            </div>
+        </section>
+        <!-- End Testimonials & Trust Badges -->
+        <!-- Recent Blog Posts / News -->
+        <section class="recent-blogs" style="background:#f8fafc;padding:40px 0 24px 0;">
+            <div style="max-width:1100px;margin:0 auto;">
+                <h2 style="color:#1976d2;font-size:1.5rem;margin-bottom:24px;text-align:center;">Latest from Our Blog</h2>
+                <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;">
+                    <a href="blog.html#post1" class="blog-card" style="background:#fff;border-radius:14px;box-shadow:0 2px 12px #1976d21a;padding:22px 28px;text-align:left;min-width:220px;flex:1;max-width:320px;text-decoration:none;transition:transform 0.15s;display:flex;flex-direction:column;">
+                        <h3 style="color:#1976d2;font-size:1.15rem;margin-bottom:10px;">Tips for First-Time Home Buyers</h3>
+                        <p style="color:#444;font-size:1rem;flex:1;">Essential advice to help you make the right decision and avoid common pitfalls when buying your first home.</p>
+                        <span style="color:#888;font-size:0.95em;margin-top:10px;">Read More &rarr;</span>
+                    </a>
+                    <a href="blog.html#post2" class="blog-card" style="background:#fff;border-radius:14px;box-shadow:0 2px 12px #1976d21a;padding:22px 28px;text-align:left;min-width:220px;flex:1;max-width:320px;text-decoration:none;transition:transform 0.15s;display:flex;flex-direction:column;">
+                        <h3 style="color:#1976d2;font-size:1.15rem;margin-bottom:10px;">Rental Market Trends 2025</h3>
+                        <p style="color:#444;font-size:1rem;flex:1;">Stay updated with the latest trends and insights in the Indian rental property market for 2025.</p>
+                        <span style="color:#888;font-size:0.95em;margin-top:10px;">Read More &rarr;</span>
+                    </a>
+                    <a href="blog.html#post3" class="blog-card" style="background:#fff;border-radius:14px;box-shadow:0 2px 12px #1976d21a;padding:22px 28px;text-align:left;min-width:220px;flex:1;max-width:320px;text-decoration:none;transition:transform 0.15s;display:flex;flex-direction:column;">
+                        <h3 style="color:#1976d2;font-size:1.15rem;margin-bottom:10px;">How to List Your Property Effectively</h3>
+                        <p style="color:#444;font-size:1rem;flex:1;">A step-by-step guide to creating attractive and effective property listings that get results.</p>
+                        <span style="color:#888;font-size:0.95em;margin-top:10px;">Read More &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- End Recent Blog Posts / News -->
+        <section id="post-property-free" style="background:#f5f5f5;padding:32px 0;text-align:center;">
+            <h2>Post Your Property Free</h2>
+            <p>List your property for sale or rent. First post is free, subsequent posts are charged.</p>
+            <a href="#" id="postNowBtn" class="cta-btn" style="display:inline-block;background:#1976d2;color:#fff;padding:12px 32px;border-radius:6px;font-size:1.2em;text-decoration:none;margin-top:16px;box-shadow:0 2px 8px rgba(0,0,0,0.08);"><i class="fa-solid fa-plus"></i> Post Now</a>
+        </section>
+    <section id="rent" data-aos="fade-up">
+        <h2>Rent Property</h2>
+        <div class="property-list" id="rentPropertyList">
+            <!-- Cards will be rendered by JS -->
+        </div>
+        <div style="text-align:center;margin-top:1rem;">
+            <a href="rent.html" class="show-more-btn">Show More</a>
+        </div>
+    </section>
+    <script>
+    // Sample rent properties data
+    const rentProperties = [
+        {type:'apartment', bedrooms:'2BHK', furnishing:'semi', location:'Golf Course Road, Gurgaon', price:35000, title:'2 BHK Flat in Gurgaon', details:'2BHK, 1200 sqft, Semi Furnished, City View', img:'https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=400&q=80'},
+        {type:'apartment', bedrooms:'3BHK', furnishing:'full', location:'Andheri, Mumbai', price:45000, title:'Luxury Apartment in Mumbai', details:'3BHK, 1800 sqft, Fully Furnished, Pool, Gym, Parking', img:'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80'},
+        {type:'villa', bedrooms:'4BHK', furnishing:'semi', location:'Whitefield, Bangalore', price:65000, title:'Modern Villa in Bangalore', details:'4BHK, 3200 sqft, Semi Furnished, Garden, Security', img:'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80'},
+        {type:'penthouse', bedrooms:'4+BHK', furnishing:'full', location:'Golf Course Road, Gurgaon', price:120000, title:'Penthouse in Gurgaon', details:'5BHK, 3500 sqft, Fully Furnished, City View', img:'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80'},
+        {type:'apartment', bedrooms:'3BHK', furnishing:'none', location:'Dwarka, Delhi', price:39000, title:'Premium Apartment in Delhi', details:'3BHK, 1600 sqft, Unfurnished, Pool, Gym', img:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=400&q=80'},
+        {type:'apartment', bedrooms:'2BHK', furnishing:'semi', location:'Thane, Mumbai', price:42000, title:'Skyline Towers', details:'2BHK, 1100 sqft, Semi Furnished, Smart Homes, Clubhouse', img:'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80'},
+        {type:'independent', bedrooms:'3BHK', furnishing:'full', location:'Gachibowli, Hyderabad', price:38000, title:'Independent House in Hyderabad', details:'3BHK, 2000 sqft, Fully Furnished, East Facing', img:'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80'},
+        {type:'farmhouse', bedrooms:'4+BHK', furnishing:'semi', location:'Malviya Nagar, Jaipur', price:25000, title:'Farm House in Jaipur', details:'5BHK, 2400 sqft, Semi Furnished, East Facing', img:'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80'},
+        {type:'villa', bedrooms:'4BHK', furnishing:'none', location:'Bannerghatta, Bangalore', price:55000, title:'Green Meadows', details:'4BHK, 3200 sqft, Unfurnished, Villas, Clubhouse', img:'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80'},
+        {type:'apartment', bedrooms:'1RK', furnishing:'semi', location:'Hinjewadi, Pune', price:18000, title:'Studio Apartment in Pune', details:'1RK, 600 sqft, Semi Furnished, Near IT Park', img:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=400&q=80'}
+    ];
+    function renderRentCards(list) {
+        const container = document.getElementById('rentPropertyList');
+        container.innerHTML = '';
+        if (list.length === 0) {
+            container.innerHTML = '<p>No properties found.</p>';
+            return;
+        }
+        list.forEach(prop => {
+            const card = document.createElement('div');
+            card.className = 'property-card';
+            card.innerHTML = `<img src='${prop.img}' alt='${prop.title}' class='property-img'><h3>${prop.title}</h3><p class='location'>${prop.location}</p><p class='price'>₹${prop.price.toLocaleString()}/month</p><p>${prop.details}</p>`;
+            container.appendChild(card);
+        });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        renderRentCards(rentProperties.slice(0,3));
+    });
+    </script>
+    <section id="buy" data-aos="fade-up">
+        <h2>Buy Property</h2>
+        <div class="property-list" id="buyPropertyList">
+            <!-- Cards will be rendered by JS -->
+        </div>
+        <div style="text-align:center;margin-top:1rem;">
+            <a href="buy.html" class="show-more-btn">Show More</a>
+        </div>
+    </section>
+    <script>
+    // Sample buy properties data
+    const buyProperties = [
+        {type:'apartment', location:'Andheri, Mumbai', price:25000000, title:'Luxury Apartment in Mumbai', details:'3 BHK, 1800 sqft, Pool, Gym, Parking', img:'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80'},
+        {type:'villa', location:'Whitefield, Bangalore', price:38000000, title:'Modern Villa in Bangalore', details:'4 BHK, 3200 sqft, Garden, Security', img:'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80'},
+        {type:'penthouse', location:'Golf Course Road, Gurgaon', price:42000000, title:'Penthouse in Gurgaon', details:'5 BHK, 3500 sqft, City View', img:'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80'},
+        {type:'residential', location:'OMR, Chennai', price:16000000, title:'Premium Apartment in Chennai', details:'3 BHK, 1500 sqft, Pool, Gym', img:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=400&q=80'},
+        {type:'apartment', location:'Koregaon Park, Pune', price:11000000, title:'2 BHK Flat in Pune', details:'2 BHK, 1100 sqft, Balcony', img:'https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=400&q=80'},
+        {type:'rowhouse', location:'Gachibowli, Hyderabad', price:22000000, title:'Row House in Hyderabad', details:'3 BHK, 2000 sqft, East Facing', img:'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80'},
+        {type:'plot', location:'Malviya Nagar, Jaipur', price:8500000, title:'Residential Plot in Jaipur', details:'2400 sqft, East Facing', img:'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80'},
+        {type:'villa', location:'Bannerghatta, Bangalore', price:22000000, title:'Green Meadows', details:'3/4 BHK, Villas, Clubhouse', img:'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80'},
+        {type:'apartment', location:'Thane, Mumbai', price:11000000, title:'Skyline Towers', details:'2/3 BHK, Smart Homes, Clubhouse', img:'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80'},
+        {type:'apartment', location:'Dwarka, Delhi', price:18000000, title:'Premium Apartment in Delhi', details:'3 BHK, 1600 sqft, Pool, Gym', img:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=400&q=80'}
+    ];
+    function renderBuyCards(list) {
+        const container = document.getElementById('buyPropertyList');
+        container.innerHTML = '';
+        if (list.length === 0) {
+            container.innerHTML = '<p>No properties found.</p>';
+            return;
+        }
+        list.forEach(prop => {
+            const card = document.createElement('div');
+            card.className = 'property-card';
+            card.innerHTML = `<img src='${prop.img}' alt='${prop.title}' class='property-img'><h3>${prop.title}</h3><p class='location'>${prop.location}</p><p class='price'>₹${(prop.price/100000).toFixed(2)} Lakh</p><p>${prop.details}</p>`;
+            container.appendChild(card);
+        });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        renderBuyCards(buyProperties.slice(0,3));
+    });
+    </script>
+    <section id="commercial" data-aos="fade-up">
+        <h2>Commercial Spaces</h2>
+        <div class="property-list">
+            <div class="property-card">
+                <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Office" class="property-img">
+                <h3>Office Space in Noida</h3>
+                <p class="location">Sector 62, Noida</p>
+                <p class="price">₹1.2 Lakh/month</p>
+                <p>2000 sqft, Furnished, Parking</p>
+            </div>
+            <div class="property-card">
+                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Office" class="property-img">
+                <h3>Business Center in Mumbai</h3>
+                <p class="location">BKC, Mumbai</p>
+                <p class="price">₹2.5 Lakh/month</p>
+                <p>3500 sqft, Conference Rooms</p>
+            </div>
+            <div class="property-card">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Office" class="property-img">
+                <h3>Retail Space in Bangalore</h3>
+                <p class="location">MG Road, Bangalore</p>
+                <p class="price">₹1.8 Lakh/month</p>
+                <p>1800 sqft, High Footfall</p>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:1rem;">
+            <a href="commercial.html" class="show-more-btn">Show More</a>
+        </div>
+    </section>
+    <svg class="divider" viewBox="0="0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#60a5fa" fill-opacity="0.2" d="M0,32L60,37.3C120,43,240,53,360,69.3C480,85,600,107,720,101.3C840,96,960,64,1080,53.3C1200,43,1320,53,1380,58.7L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+    <section id="about" data-aos="fade-up" data-aos-delay="300">
+        <h2>About Ghar4Rent</h2>
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Our Team" class="about-img">
+        <p>Ghar4Rent is a leading real estate business dedicated to helping clients find the perfect property. With years of experience and a commitment to transparency, we make property transactions smooth and secure.</p>
+        <ul>
+            <li>Experienced real estate professionals</li>
+            <li>Wide network of property owners and buyers</li>
+            <li>End-to-end support for every transaction</li>
+        </ul>
+    </section>
+    <section id="testimonials" data-aos="fade-up" data-aos-delay="400">
+        <h2>Client Testimonials</h2>
+        <div class="testimonials-slider">
+            <div class="testimonial active">
+                <blockquote>"Ghar4Rent helped me find my dream home quickly and easily!" – Priya S.</blockquote>
+            </div>
+            <div class="testimonial">
+                <blockquote>"Professional and transparent service. Highly recommended." – Rajesh K.</blockquote>
+            </div>
+            <div class="testimonial">
+                <blockquote>"Excellent support and great property options!" – Anjali M.</blockquote>
+            </div>
+        </div>
+    </section>
+    <section id="faq" data-aos="fade-up" data-aos-delay="500">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <h4>How do I list my property?</h4>
+                <p>Contact us via the form or WhatsApp, and our team will guide you through the listing process.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Are all properties verified?</h4>
+                <p>Yes, every property is verified by our experts before being listed on Ghar4Rent.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I schedule a visit?</h4>
+                <p>Absolutely! Use the contact form or chat to schedule a property visit at your convenience.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Do you offer legal assistance?</h4>
+                <p>Yes, we provide legal support for all property transactions to ensure a smooth experience.</p>
+            </div>
+        </div>
+    </section>
+    <section id="contact" data-aos="fade-up" data-aos-delay="400">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" style="background:#1976d2;color:#fff;padding:12px 32px;border:none;border-radius:7px;font-size:1.1rem;font-weight:600;box-shadow:0 2px 8px #1976d255;cursor:pointer;transition:background 0.2s;">Send Message</button>
+        </form>
+        <div id="contactResponse"></div>
+        <div class="business-contact">
+            <p><strong>Email:</strong> info@ghar4rent.com</p>
+            <p><strong>Phone:</strong> +91-9876543210</p>
+            <p><strong>Address:</strong> 123 Business Avenue, Mumbai, India</p>
+        </div>
+        <div class="floating-chat" id="floatingChat" data-aos="fade-left">
+            <a href="https://wa.me/919876543210" target="_blank">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=80&q=80" alt="Chat" style="width:40px; height:40px; border-radius:50%; box-shadow:0 2px 8px #2563eb;">
+            </a>
+        </div>
+    </section>
+    <footer data-aos="fade-up">
+            <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-start;">
+                <div style="flex:2;min-width:220px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;">
+                    <img src="assets/logo.jpg" alt="Ghar4Rent Logo" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid #eee;margin-bottom:10px;background:#fff;">
+                    <h3 style="margin:0 0 8px 0;">Ghar4Rent</h3>
+                    <p style="margin:0 0 8px 0;font-size:1.05em;">Your trusted partner for renting and buying homes, flats, and commercial properties.</p>
+                </div>
+                <div style="flex:1;min-width:180px;text-align:left;">
+                    <h4 style="margin-bottom:10px;">Quick Links</h4>
+                    <a href="index.html" style="color:#fff;text-decoration:none;display:block;margin-bottom:6px;">Home</a>
+                    <a href="buy.html" style="color:#fff;text-decoration:none;display:block;margin-bottom:6px;">Buy</a>
+                    <a href="rent.html" style="color:#fff;text-decoration:none;display:block;margin-bottom:6px;">Rent</a>
+                    <a href="commercial.html" style="color:#fff;text-decoration:none;display:block;margin-bottom:6px;">Commercial</a>
+                    <a href="post-property.html" style="color:#fff;text-decoration:none;display:block;margin-bottom:6px;">Post Property</a>
+                </div>
+                <div style="flex:1;min-width:180px;text-align:left;">
+                    <h4 style="margin-bottom:10px;">Contact</h4>
+                    <p style="margin:0 0 8px 0;font-size:1.05em;"><i class="fa-solid fa-phone"></i> +91-9876543210</p>
+                    <p style="margin:0 0 8px 0;font-size:1.05em;"><i class="fa-solid fa-envelope"></i> info@ghar4rent.com</p>
+                    <div style="margin-top:10px;">
+                        <a href="#" style="color:#fff;margin-right:12px;font-size:1.3em;"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" style="color:#fff;margin-right:12px;font-size:1.3em;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" style="color:#fff;margin-right:12px;font-size:1.3em;"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:24px;font-size:0.98em;color:#e3eafc;">&copy; 2025 Ghar4Rent. All rights reserved.</div>
+    </footer>
+        <script src="main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script>
+            AOS.init({ once: true });
+            // Animated counters
+            document.addEventListener('DOMContentLoaded', function() {
+                function animateCounter(counter) {
+                    const target = +counter.getAttribute('data-target');
+                    let count = 0;
+                    const increment = Math.ceil(target / 60);
+                    function update() {
+                        count += increment;
+                        if (count > target) count = target;
+                        counter.textContent = count;
+                        if (count < target) requestAnimationFrame(update);
+                    }
+                    update();
+                }
+                document.querySelectorAll('.counter').forEach(animateCounter);
+
+                // Menu item scrolls to section
+                document.getElementById('menuPostProperty').onclick = function(e) {
+                    e.preventDefault();
+                    document.getElementById('post-property-free').scrollIntoView({behavior:'smooth'});
+                };
+                // Post Now button navigates to post-property.html
+                document.getElementById('postNowBtn').onclick = function(e) {
+                    e.preventDefault();
+                    window.location.href = 'post-property.html';
+                };
+            });
+            // Testimonials slider
+            let testimonialIndex = 0;
+            const testimonials = document.querySelectorAll('.testimonial');
+            setInterval(() => {
+                testimonials.forEach((t, i) => t.classList.remove('active'));
+                testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+                testimonials[testimonialIndex].classList.add('active');
+            }, 3500);
+            function toggleServiceDropdown(id) {
+                var el = document.getElementById(id);
+                el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+        }
+        </script>
+</body>
+</html>

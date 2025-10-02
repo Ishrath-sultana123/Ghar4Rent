@@ -1,0 +1,132 @@
+/* buy-style.css: Custom styles for buy.html header, nav, logo, and footer */
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background: var(--white);
+    color: var(--text-dark);
+}
+header {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+    position: relative;
+    z-index: 10;
+    transition: box-shadow 0.2s;
+}
+.filters {
+    display: flex;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    gap: 18px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    background: none;
+    padding: 0 0 10px 0;
+    margin-bottom: 18px;
+    border-radius: 0;
+    box-shadow: none;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    scrollbar-width: thin;
+    white-space: nowrap;
+}
+.filters select {
+    padding: 8px 10px;
+    border-radius: 7px;
+    border: 1.5px solid #b0c4de;
+    background: #fff;
+    color: #1a237e;
+    font-size: 0.85rem;
+    min-width: 120px;
+    width: auto;
+    box-shadow: 0 1px 4px #1976d21a;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+.filters select:focus {
+    border: 1.5px solid #1976d2;
+    outline: none;
+    box-shadow: 0 2px 8px #1976d233;
+}
+@media (max-width: 900px) {
+    .filters {
+        gap: 10px;
+        padding: 12px 4px 8px 4px;
+    }
+    .filters select {
+        font-size: 0.98rem;
+        min-width: 90px;
+        padding: 7px 8px;
+    }
+}
+header .logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #eee;
+    margin-right: 12px;
+}
+nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-end;
+    background: none;
+    font-size: 1.08em;
+}
+nav a {
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+nav a:hover, nav a.active {
+    background: var(--secondary-blue);
+    color: var(--accent-blue);
+}
+.menu-toggle {
+    display: none;
+}
+@media (max-width: 800px) {
+    nav {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #fff;
+        width: 200px;
+        box-shadow: 0 2px 12px #1976d21a;
+        display: none;
+    }
+    nav.open {
+        display: flex;
+    }
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #1976d2;
+        position: absolute;
+        right: 16px;
+        top: 10px;
+        cursor: pointer;
+    }
+}
+footer {
+    background: #2563eb;
+    color: #fff;
+    border-radius: 0 0 16px 16px;
+    margin-top: 2rem;
+    box-shadow: 0 -2px 8px rgba(30,41,59,0.08);
+    padding: 2rem 1rem 1rem 1rem;
+}

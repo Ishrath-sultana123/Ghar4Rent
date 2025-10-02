@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Properties - Ghar4Rent</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body>
+        <header data-aos="fade-down">
+            <a href="index.html"><img src="assets/logo.jpg" alt="Ghar4Rent Logo" class="logo"></a>
+            <button class="menu-toggle" aria-label="Open menu">&#9776;</button>
+            <nav>
+                <a href="index.html"><i class="fa-solid fa-house-user"></i> Home</a>
+                <a href="buy.html"><i class="fa-solid fa-cart-shopping"></i> Buy</a>
+                <a href="rent.html"><i class="fa-solid fa-house"></i> Rent</a>
+                <a href="commercial.html"><i class="fa-solid fa-building"></i> Commercial</a>
+                <a href="post-property.html" id="menuPostProperty"><i class="fa-solid fa-plus"></i> Post Property Free</a>
+                <a href="#contact"><i class="fa-solid fa-phone"></i> Contact</a>
+            </nav>
+        </header>
+    <!-- Hero Section -->
+    <section class="hero" style="background: url('assets/rent.jpg') center/cover no-repeat; min-height: 45vh; display: flex; align-items: center; justify-content: center; position: relative;">
+      <div style="background: rgba(0,0,0,0.45); padding: 2rem 1.5rem; border-radius: 18px; box-shadow: 0 4px 32px rgba(0,0,0,0.10); text-align: center; max-width: 600px; width: 100%;">
+        <h1 style="color: #fff; font-size: 2.1rem; font-weight: 700; margin-bottom: 1rem;">Find Properties for Rent</h1>
+        <p style="color: #f3f3f3; font-size: 1.1rem; margin-bottom: 1.5rem;">Browse verified rental listings and discover your next home with Ghar4Rent.</p>
+        <a href="post-property.html" class="cta-btn" style="background: #1976d2; color: #fff; padding: 0.8rem 2rem; border-radius: 8px; font-size: 1.1rem; font-weight: 600; text-decoration: none; box-shadow: 0 2px 8px rgba(25,118,210,0.15); transition: background 0.2s;">Post Property Free</a>
+      </div>
+    </section>
+    <!-- Testimonials & Trust Badges Section -->
+    <!-- ...existing code... -->
+
+    <!-- Recent Blog/News Section -->
+    <!-- ...existing code... -->
+    <!-- End Hero Section -->
+        <!-- End Hero Section -->
+    <section id="rent" class="animate-fadein">
+    <h2 style="text-align:center;font-size:2rem;font-weight:700;margin:32px 0 18px 0;color:#1a237e;letter-spacing:0.5px;">All Rent Properties</h2>
+    <div class="filters">
+            <select id="rentTypeFilter" onchange="filterRentCards()" style="padding:7px 12px;border-radius:6px;border:1px solid #b0c4de;">
+                <option value="all">All Property Types</option>
+                <option value="apartment">Flat/Apartment</option>
+                <option value="independent">Independent House</option>
+                <option value="villa">Villa</option>
+                <option value="commercial">Commercial</option>
+                <option value="farmhouse">Farm House</option>
+            </select>
+            <select id="rentBedroomFilter" onchange="filterRentCards()" style="padding:7px 12px;border-radius:6px;border:1px solid #b0c4de;">
+                <option value="all">All Bedrooms</option>
+                <option value="1RK">1RK/1BHK</option>
+                <option value="2BHK">2BHK</option>
+                <option value="3BHK">3BHK</option>
+                <option value="4BHK">4BHK</option>
+                <option value="4+BHK">4+BHK</option>
+            </select>
+            <select id="rentFurnishingFilter" onchange="filterRentCards()" style="padding:7px 12px;border-radius:6px;border:1px solid #b0c4de;">
+                <option value="all">All Furnishing Types</option>
+                <option value="semi">Semi Furnished</option>
+                <option value="full">Fully Furnished</option>
+                <option value="none">Unfurnished</option>
+            </select>
+            <select id="rentLocationFilter" onchange="filterRentCards()" style="padding:7px 12px;border-radius:6px;border:1px solid #b0c4de;min-width:120px;">
+                <option value="all">All Locations</option>
+                <option value="Gachibowli">Gachibowli</option>
+                <option value="Hitech City">Hitech City</option>
+                <option value="Jubilee Hills">Jubilee Hills</option>
+                <option value="Banjara Hills">Banjara Hills</option>
+                <option value="Kondapur">Kondapur</option>
+                <option value="Madhapur">Madhapur</option>
+                <option value="Manikonda">Manikonda</option>
+                <option value="Shamshabad">Shamshabad</option>
+                <option value="Begumpet">Begumpet</option>
+                <option value="Secunderabad">Secunderabad</option>
+            </select>
+            <select id="rentMinPrice" onchange="filterRentCards()" style="padding:7px 12px;border-radius:6px;border:1px solid #b0c4de;width:120px;">
+                <option value="0">Min Price</option>
+                <option value="1000">₹1k</option>
+                <option value="2000">₹2k</option>
+                <option value="3000">₹3k</option>
+                <option value="4000">₹4k</option>
+                <option value="5000">₹5k</option>
+                <option value="6000">₹6k</option>
+                <option value="7000">₹7k</option>
+                <option value="8000">₹8k</option>
+                <option value="9000">₹9k</option>
+                <option value="10000">₹10k</option>
+                <option value="20000">₹20k</option>
+                <option value="30000">₹30k</option>
+                <option value="40000">₹40k</option>
+                <option value="50000">₹50k</option>
+                <option value="60000">₹60k</option>
+                <option value="70000">₹70k</option>
+                <option value="80000">₹80k</option>
+                <option value="90000">₹90k</option>
+                <option value="100000">₹1 Lakh</option>
+                <option value="200000">₹2 Lakh</option>
+                <option value="300000">₹3 Lakh</option>
+                <option value="400000">₹4 Lakh</option>
+                <option value="500000">₹5 Lakh</option>
+                <option value="600000">₹6 Lakh</option>
+                <option value="700000">₹7 Lakh</option>
+                <option value="800000">₹8 Lakh</option>
+                <option value="900000">₹9 Lakh</option>
+                <option value="1000000">₹10 Lakh</option>
+            </select>
+            <select id="rentMaxPrice" onchange="filterRentCards()" style="padding:7px 12px;border-radius:6px;border:1px solid #b0c4de;width:120px;">
+                <option value="100000000">Max Price</option>
+                <option value="1000">₹1k</option>
+                <option value="2000">₹2k</option>
+                <option value="3000">₹3k</option>
+                <option value="4000">₹4k</option>
+                <option value="5000">₹5k</option>
+                <option value="6000">₹6k</option>
+                <option value="7000">₹7k</option>
+                <option value="8000">₹8k</option>
+                <option value="9000">₹9k</option>
+                <option value="10000">₹10k</option>
+                <option value="20000">₹20k</option>
+                <option value="30000">₹30k</option>
+                <option value="40000">₹40k</option>
+                <option value="50000">₹50k</option>
+                <option value="60000">₹60k</option>
+                <option value="70000">₹70k</option>
+                <option value="80000">₹80k</option>
+                <option value="90000">₹90k</option>
+                <option value="100000">₹1 Lakh</option>
+                <option value="200000">₹2 Lakh</option>
+                <option value="300000">₹3 Lakh</option>
+                <option value="400000">₹4 Lakh</option>
+                <option value="500000">₹5 Lakh</option>
+                <option value="600000">₹6 Lakh</option>
+                <option value="700000">₹7 Lakh</option>
+                <option value="800000">₹8 Lakh</option>
+                <option value="900000">₹9 Lakh</option>
+                <option value="1000000">₹10 Lakh</option>
+                <option value="10000000">₹1 Crore</option>
+            </select>
+        </div>
+    <div class="filter-summary" id="rentFilterSummary" style="text-align:center;font-size:1.15rem;font-weight:500;margin:18px 0 18px 0;color:#1a237e;"><!-- JS will update this --></div>
+        <div class="property-list" id="rentPropertyList">
+            <!-- Cards will be rendered by JS -->
+        </div>
+    </section>
+
+    <!-- Platform Benefits Section -->
+    <!-- ...existing code... -->
+    <script>
+    let bedroomFilter = 'all';
+    let typeFilter = 'all';
+    let furnishingFilter = 'all';
+    function setBedroomFilter(val) { bedroomFilter = val; filterRentCards(); }
+    function setTypeFilter(val) { typeFilter = val; filterRentCards(); }
+    function setFurnishingFilter(val) { furnishingFilter = val; filterRentCards(); }
+    const rentProperties = [
+    {type:'apartment', bedrooms:'2BHK', furnishing:'semi', location:'Golf Course Road, Gurgaon', price:35000, title:'2 BHK Flat in Gurgaon', details:'2BHK, 1200 sqft, Semi Furnished, City View', img:'https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=400&q=80'},
+    {type:'apartment', bedrooms:'3BHK', furnishing:'full', location:'Andheri, Mumbai', price:45000, title:'Luxury Apartment in Mumbai', details:'3BHK, 1800 sqft, Fully Furnished, Pool, Gym, Parking', img:'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80'},
+    {type:'villa', bedrooms:'4BHK', furnishing:'semi', location:'Whitefield, Bangalore', price:65000, title:'Modern Villa in Bangalore', details:'4BHK, 3200 sqft, Semi Furnished, Garden, Security', img:'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80'},
+    {type:'penthouse', bedrooms:'4+BHK', furnishing:'full', location:'Golf Course Road, Gurgaon', price:120000, title:'Penthouse in Gurgaon', details:'5BHK, 3500 sqft, Fully Furnished, City View', img:'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80'},
+    {type:'apartment', bedrooms:'3BHK', furnishing:'none', location:'Dwarka, Delhi', price:39000, title:'Premium Apartment in Delhi', details:'3BHK, 1600 sqft, Unfurnished, Pool, Gym', img:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=400&q=80'},
+    {type:'apartment', bedrooms:'2BHK', furnishing:'semi', location:'Thane, Mumbai', price:42000, title:'Skyline Towers', details:'2BHK, 1100 sqft, Semi Furnished, Smart Homes, Clubhouse', img:'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80'},
+    {type:'independent', bedrooms:'3BHK', furnishing:'full', location:'Gachibowli, Hyderabad', price:38000, title:'Independent House in Hyderabad', details:'3BHK, 2000 sqft, Fully Furnished, East Facing', img:'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80'},
+    {type:'villa', bedrooms:'4BHK', furnishing:'none', location:'Bannerghatta, Bangalore', price:55000, title:'Green Meadows', details:'4BHK, 3200 sqft, Unfurnished, Villas, Clubhouse', img:'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80'},
+    {type:'apartment', bedrooms:'1RK', furnishing:'semi', location:'Hinjewadi, Pune', price:18000, title:'Studio Apartment in Pune', details:'1RK, 600 sqft, Semi Furnished, Near IT Park', img:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=400&q=80'},
+    {type:'apartment', bedrooms:'2BHK', furnishing:'full', location:'Jubilee Hills, Hyderabad', price:50000, title:'Apartment in Jubilee Hills', details:'2BHK, 1200 sqft, Fully Furnished, Pool', img:'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80'},
+    {type:'independent', bedrooms:'3BHK', furnishing:'semi', location:'Hitech City, Hyderabad', price:35000, title:'House in Hitech City', details:'3BHK, 1800 sqft, Semi Furnished, Parking', img:'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80'},
+    {type:'villa', bedrooms:'4BHK', furnishing:'none', location:'Banjara Hills, Hyderabad', price:60000, title:'Villa in Banjara Hills', details:'4BHK, 4000 sqft, Unfurnished, Garden', img:'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80'},
+    {type:'apartment', bedrooms:'2BHK', furnishing:'semi', location:'Kondapur, Hyderabad', price:32000, title:'Apartment in Kondapur', details:'2BHK, 1100 sqft, Semi Furnished, Gym', img:'https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=400&q=80'},
+    {type:'independent', bedrooms:'3BHK', furnishing:'full', location:'Madhapur, Hyderabad', price:40000, title:'House in Madhapur', details:'3BHK, 2000 sqft, Fully Furnished, East Facing', img:'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80'},
+    {type:'apartment', bedrooms:'1RK', furnishing:'none', location:'Manikonda, Hyderabad', price:15000, title:'Studio in Manikonda', details:'1RK, 500 sqft, Unfurnished, Near IT Park', img:'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80'},
+    {type:'villa', bedrooms:'4BHK', furnishing:'semi', location:'Shamshabad, Hyderabad', price:35000, title:'Villa in Shamshabad', details:'4BHK, 3500 sqft, Semi Furnished, Garden', img:'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80'},
+    {type:'apartment', bedrooms:'3BHK', furnishing:'full', location:'Begumpet, Hyderabad', price:42000, title:'Apartment in Begumpet', details:'3BHK, 1600 sqft, Fully Furnished, Pool', img:'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80'},
+    {type:'independent', bedrooms:'2BHK', furnishing:'semi', location:'Secunderabad, Hyderabad', price:25000, title:'House in Secunderabad', details:'2BHK, 1200 sqft, Semi Furnished, Parking', img:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=400&q=80'}
+    ];
+    function filterRentCards() {
+        const bedroom = document.getElementById('rentBedroomFilter').value;
+        const type = document.getElementById('rentTypeFilter').value;
+        const furnishing = document.getElementById('rentFurnishingFilter').value;
+        const location = document.getElementById('rentLocationFilter').value;
+        const minPrice = parseInt(document.getElementById('rentMinPrice').value);
+        const maxPrice = parseInt(document.getElementById('rentMaxPrice').value);
+        let filtered = rentProperties.filter(p => {
+            const matchesBedroom = bedroom === 'all' || p.bedrooms === bedroom;
+            const matchesType = type === 'all' || p.type === type;
+            const matchesFurnishing = furnishing === 'all' || p.furnishing === furnishing;
+            const matchesLocation = location === 'all' || p.location.includes(location);
+            const matchesMinPrice = isNaN(minPrice) || p.price >= minPrice;
+            const matchesMaxPrice = isNaN(maxPrice) || p.price <= maxPrice;
+            return matchesBedroom && matchesType && matchesFurnishing && matchesLocation && matchesMinPrice && matchesMaxPrice;
+        });
+        renderRentCards(filtered);
+    }
+    function renderRentCards(list) {
+        // Update filter summary above the cards
+        const summaryDiv = document.getElementById('rentFilterSummary');
+        summaryDiv.innerHTML = `<strong>Showing ${list.length} properties</strong>`;
+        const container = document.getElementById('rentPropertyList');
+        container.innerHTML = '';
+        if (list.length === 0) {
+            container.innerHTML = '<p class="no-results">No properties found. Try changing your filters.</p>';
+            return;
+        }
+        list.forEach(prop => {
+            const card = document.createElement('div');
+            card.className = 'property-card';
+            card.innerHTML = `<img src='${prop.img}' alt='${prop.title}' class='property-img'><h3>${prop.title}</h3><p class='location'>${prop.location}</p><p class='price'>₹${prop.price.toLocaleString()}/month</p><p>${prop.details}</p>`;
+            container.appendChild(card);
+        });
+    }
+    document.addEventListener('DOMContentLoaded', filterRentCards);
+    </script>
+    <footer data-aos="fade-up">
+        <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-start;">
+            <div style="flex:2;min-width:220px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;">
+                <img src="assets/logo.jpg" alt="Ghar4Rent Logo" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid #eee;margin-bottom:10px;background:#fff;">
+                <h3 style="margin:0 0 8px 0;">Ghar4Rent</h3>
+                <p style="margin:0 0 8px 0;font-size:1.05em;">Your trusted partner for renting and buying homes, flats, and commercial properties.</p>
+            </div>
+            <div style="flex:1;min-width:180px;text-align:left;">
+                <h4 style="margin-bottom:10px;">Quick Links</h4>
+                <a href="index.html" style="color:#fff;text-decoration:none;display:block;margin-bottom:6px;">Home</a>
+                <a href="buy.html" style="color:#fff;text-decoration:none;display:block;margin-bottom:6px;">Buy</a>
+                <a href="rent.html" style="color:#fff;text-decoration:none;display:block;margin-bottom:6px;">Rent</a>
+                <a href="commercial.html" style="color:#fff;text-decoration:none;display:block;margin-bottom:6px;">Commercial</a>
+                <a href="post-property.html" style="color:#fff;text-decoration:none;display:block;margin-bottom:6px;">Post Property</a>
+            </div>
+            <div style="flex:1;min-width:180px;text-align:left;">
+                <h4 style="margin-bottom:10px;">Contact</h4>
+                <p style="margin:0 0 8px 0;font-size:1.05em;"><i class="fa-solid fa-phone"></i> +91-9876543210</p>
+                <p style="margin:0 0 8px 0;font-size:1.05em;"><i class="fa-solid fa-envelope"></i> info@ghar4rent.com</p>
+                <div style="margin-top:10px;">
+                    <a href="#" style="color:#fff;margin-right:12px;font-size:1.3em;"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" style="color:#fff;margin-right:12px;font-size:1.3em;"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" style="color:#fff;margin-right:12px;font-size:1.3em;"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top:24px;font-size:0.98em;color:#e3eafc;">&copy; 2025 Ghar4Rent. All rights reserved.</div>
+    </footer>
+    <script src="rent.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
