@@ -46,12 +46,46 @@ function renderNewProjects(list) {
     });
 }
 
+function renderFeaturedProperties(list) {
+    const container = document.getElementById('featuredPropertiesList');
+    if (!container) return;
+    container.innerHTML = '';
+    if (list.length === 0) {
+        container.innerHTML = '<p>No featured properties found.</p>';
+        return;
+    }
+    list.forEach(prop => {
+        const card = document.createElement('div');
+        card.className = 'property-card';
+        card.innerHTML = `<a href="property-details.html?id=${prop.id}"><img src='${prop.img}' alt='${prop.title}' class='property-img'><h3>${prop.title}</h3><p class='location'>${prop.location}</p><p class='price'>${prop.price.toLocaleString()}</p><p>${prop.details}</p></a>`;
+        container.appendChild(card);
+    });
+}
+
+function renderTopLocalities(list) {
+    const container = document.getElementById('topLocalitiesList');
+    if (!container) return;
+    container.innerHTML = '';
+    if (list.length === 0) {
+        container.innerHTML = '<p>No top localities found.</p>';
+        return;
+    }
+    list.forEach(locality => {
+        const card = document.createElement('div');
+        card.className = 'locality-card';
+        card.innerHTML = `<h3>${locality}</h3>`;
+        container.appendChild(card);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Check if properties array exists
     if (typeof properties !== 'undefined') {
         const rentProperties = properties.filter(p => p.status === 'rent');
         const buyProperties = properties.filter(p => p.status === 'buy');
         const newProjects = properties.slice(-3); // Get last 3 properties as "new"
+        const featuredProperties = properties.filter(p => p.id % 2 === 0).slice(0,3); // Example: feature even ID properties
+        const topLocalities = [...new Set(properties.map(p => p.location.split(', ')[1]))].slice(0, 5);
 
         // Check if the containers exist before rendering
         if (document.getElementById('rentPropertyList')) {
@@ -62,6 +96,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (document.getElementById('newProjectsList')) {
             renderNewProjects(newProjects);
+        }
+        if (document.getElementById('featuredPropertiesList')) {
+            renderFeaturedProperties(featuredProperties);
+        }
+        if (document.getElementById('topLocalitiesList')) {
+            renderTopLocalities(topLocalities);
         }
     }
 
@@ -101,4 +141,44 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     });
+
+    // Location search auto-suggestion
+    const locationSearch = document.getElementById('locationSearch');
+    const suggestionsContainer = document.getElementById('suggestionsContainer');
+    const locationSearchContainer = document.getElementById('locationSearchContainer');
+
+    if (locationSearch) {
+        const locations = [...new Set(properties.map(p => p.location.split(', ')[1]))];
+
+        locationSearch.addEventListener('input', () => {
+            const inputText = locationSearch.value.toLowerCase();
+            suggestionsContainer.innerHTML = '';
+            if (inputText.length > 0) {
+                const suggestions = locations.filter(loc => loc.toLowerCase().startsWith(inputText));
+                if (suggestions.length > 0) {
+                    suggestions.forEach(s => {
+                        const suggestionItem = document.createElement('div');
+                        suggestionItem.className = 'suggestion-item';
+                        suggestionItem.textContent = s;
+                        suggestionItem.onclick = () => {
+                            locationSearch.value = s;
+                            suggestionsContainer.style.display = 'none';
+                        };
+                        suggestionsContainer.appendChild(suggestionItem);
+                    });
+                    suggestionsContainer.style.display = 'block';
+                } else {
+                    suggestionsContainer.style.display = 'none';
+                }
+            } else {
+                suggestionsContainer.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!locationSearchContainer.contains(e.target)) {
+                suggestionsContainer.style.display = 'none';
+            }
+        });
+    }
 });

@@ -97,6 +97,79 @@ nav a:hover {
     background: url('assets/consult.jpg') center/cover no-repeat;
     min-height: 45vh;
 }
+
+.search-form {
+    display: flex;
+    background: var(--white);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    gap: 1rem;
+    align-items: center;
+}
+
+.search-field {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.search-field i {
+    color: var(--primary-color);
+}
+
+.search-field input,
+.search-field select {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    width: 100%;
+    color: var(--text-color);
+}
+
+.search-btn {
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+    background: var(--secondary-color);
+}
+
+.suggestions-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 10;
+}
+
+.suggestion-item {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.suggestion-item:hover {
+    background-color: var(--light-gray);
+}
 .hero > div {
     max-width: 600px;
     width: 100%;
@@ -1177,6 +1250,67 @@ section {
 }
 
 .services-title {
+    color: var(--heading-color);
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+}
+
+/* Top Localities Section */
+.top-localities-section {
+    background: var(--light-gray);
+    padding: 40px 0;
+}
+
+.top-localities-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.top-localities-title {
+    color: var(--heading-color);
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+}
+
+.localities-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.locality-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.locality-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.locality-card h3 {
+    color: var(--heading-color);
+    margin-top: 0;
+}
+
+/* Featured Properties Section */
+.featured-properties-section {
+    background: var(--white);
+    padding: 40px 0;
+}
+
+.featured-properties-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.featured-properties-title {
     color: var(--heading-color);
     font-size: 1.5rem;
     margin-bottom: 24px;
