@@ -7,9 +7,50 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('commercialTypeFilter').addEventListener('change', filterCommercialCards);
     document.getElementById('commercialAreaFilter').addEventListener('change', filterCommercialCards);
     document.getElementById('commercialFurnishingFilter').addEventListener('change', filterCommercialCards);
-    document.getElementById('commercialLocationFilter').addEventListener('change', filterCommercialCards);
+    document.getElementById('commercialLocationFilter').addEventListener('input', filterCommercialCards);
     document.getElementById('commercialMinPrice').addEventListener('change', filterCommercialCards);
     document.getElementById('commercialMaxPrice').addEventListener('change', filterCommercialCards);
+
+    // Location search auto-suggestion
+    const locationSearch = document.getElementById('commercialLocationFilter');
+    const suggestionsContainer = document.getElementById('suggestionsContainer');
+    const locationSearchContainer = document.getElementById('locationSearchContainer');
+
+    if (locationSearch) {
+        const locations = [...new Set(properties.filter(p => p.category === 'commercial').map(p => p.location.split(', ')[1]))];
+
+        locationSearch.addEventListener('input', () => {
+            const inputText = locationSearch.value.toLowerCase();
+            suggestionsContainer.innerHTML = '';
+            if (inputText.length > 0) {
+                const suggestions = locations.filter(loc => loc.toLowerCase().startsWith(inputText));
+                if (suggestions.length > 0) {
+                    suggestions.forEach(s => {
+                        const suggestionItem = document.createElement('div');
+                        suggestionItem.className = 'suggestion-item';
+                        suggestionItem.textContent = s;
+                        suggestionItem.onclick = () => {
+                            locationSearch.value = s;
+                            suggestionsContainer.style.display = 'none';
+                            filterCommercialCards();
+                        };
+                        suggestionsContainer.appendChild(suggestionItem);
+                    });
+                    suggestionsContainer.style.display = 'block';
+                } else {
+                    suggestionsContainer.style.display = 'none';
+                }
+            } else {
+                suggestionsContainer.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!locationSearchContainer.contains(e.target)) {
+                suggestionsContainer.style.display = 'none';
+            }
+        });
+    }
 });
 
 function filterCommercialCards() {

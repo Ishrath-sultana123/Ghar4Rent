@@ -8,18 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 </head>
 <body>
-        <header data-aos="fade-down">
-            <a href="index.html"><img src="assets/logo.jpg" alt="Ghar4Rent Logo" class="logo"></a>
-            <button class="menu-toggle" aria-label="Open menu">&#9776;</button>
-            <nav>
-                <a href="index.html"><i class="fa-solid fa-house-user"></i> Home</a>
-                <a href="buy.html"><i class="fa-solid fa-cart-shopping"></i> Buy</a>
-                <a href="rent.html"><i class="fa-solid fa-house"></i> Rent</a>
-                <a href="commercial.html"><i class="fa-solid fa-building"></i> Commercial</a>
-                <a href="post-property.html" id="menuPostProperty"><i class="fa-solid fa-plus"></i> Post Property Free</a>
-                <a href="#contact"><i class="fa-solid fa-phone"></i> Contact</a>
-            </nav>
-        </header>
+    <header data-aos="fade-down">
+    <a href="index.html"><img src="assets/logo.jpg" alt="Ghar4Rent Logo" class="logo"></a>
+    <button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('nav').classList.toggle('open')">&#9776;</button>
+    <nav>
+    <a href="index.html"><i class="fa-solid fa-house-user"></i> Home</a>
+    <a href="buy.html"><i class="fa-solid fa-cart-shopping"></i> Buy</a>
+    <a href="rent.html"><i class="fa-solid fa-house"></i> Rent</a>
+    <a href="commercial.html"><i class="fa-solid fa-building"></i> Commercial</a>
+    <a href="post-property.html" id="menuPostProperty"><i class="fa-solid fa-plus"></i> Post Property Free</a>
+    <a href="#contact"><i class="fa-solid fa-phone"></i> Contact</a>
+    </nav>
+    </header>
     <!-- Hero Section -->
     <section class="hero hero-rent">
       <div class="hero-overlay">
@@ -60,19 +60,11 @@
                 <option value="full">Fully Furnished</option>
                 <option value="none">Unfurnished</option>
             </select>
-            <select id="rentLocationFilter" onchange="filterRentCards()" style="padding:7px 12px;border-radius:6px;border:1px solid #b0c4de;min-width:120px;">
-                <option value="all">All Locations</option>
-                <option value="Gachibowli">Gachibowli</option>
-                <option value="Hitech City">Hitech City</option>
-                <option value="Jubilee Hills">Jubilee Hills</option>
-                <option value="Banjara Hills">Banjara Hills</option>
-                <option value="Kondapur">Kondapur</option>
-                <option value="Madhapur">Madhapur</option>
-                <option value="Manikonda">Manikonda</option>
-                <option value="Shamshabad">Shamshabad</option>
-                <option value="Begumpet">Begumpet</option>
-                <option value="Secunderabad">Secunderabad</option>
-            </select>
+            <div class="search-field" id="locationSearchContainer">
+                <i class="fa-solid fa-location-dot"></i>
+                <input type="text" id="rentLocationFilter" placeholder="Enter a location, or city">
+                <div class="suggestions-container" id="suggestionsContainer"></div>
+            </div>
             <select id="rentMinPrice" onchange="filterRentCards()" style="padding:7px 12px;border-radius:6px;border:1px solid #b0c4de;width:120px;">
                 <option value="0">Min Price</option>
                 <option value="1000">₹1k</option>

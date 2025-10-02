@@ -141,44 +141,4 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     });
-
-    // Location search auto-suggestion
-    const locationSearch = document.getElementById('locationSearch');
-    const suggestionsContainer = document.getElementById('suggestionsContainer');
-    const locationSearchContainer = document.getElementById('locationSearchContainer');
-
-    if (locationSearch) {
-        const locations = [...new Set(properties.map(p => p.location.split(', ')[1]))];
-
-        locationSearch.addEventListener('input', () => {
-            const inputText = locationSearch.value.toLowerCase();
-            suggestionsContainer.innerHTML = '';
-            if (inputText.length > 0) {
-                const suggestions = locations.filter(loc => loc.toLowerCase().startsWith(inputText));
-                if (suggestions.length > 0) {
-                    suggestions.forEach(s => {
-                        const suggestionItem = document.createElement('div');
-                        suggestionItem.className = 'suggestion-item';
-                        suggestionItem.textContent = s;
-                        suggestionItem.onclick = () => {
-                            locationSearch.value = s;
-                            suggestionsContainer.style.display = 'none';
-                        };
-                        suggestionsContainer.appendChild(suggestionItem);
-                    });
-                    suggestionsContainer.style.display = 'block';
-                } else {
-                    suggestionsContainer.style.display = 'none';
-                }
-            } else {
-                suggestionsContainer.style.display = 'none';
-            }
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!locationSearchContainer.contains(e.target)) {
-                suggestionsContainer.style.display = 'none';
-            }
-        });
-    }
 });
