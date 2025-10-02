@@ -79,12 +79,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Go to top button logic
     const goToTopBtn = document.getElementById("goToTopBtn");
+    const header = document.querySelector('header');
 
     window.onscroll = function() {
+        // Go to top button visibility
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
             goToTopBtn.style.display = "block";
         } else {
             goToTopBtn.style.display = "none";
+        }
+
+        // Sticky header
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
         }
     };
 
