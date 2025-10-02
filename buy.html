@@ -23,11 +23,11 @@
     </nav>
     </header>
     <!-- Hero Section -->
-    <section class="hero" style="background: url('assets/buy.jpg') center/cover no-repeat; min-height: 45vh; display: flex; align-items: center; justify-content: center; position: relative;">
-      <div style="background: rgba(0,0,0,0.45); padding: 2rem 1.5rem; border-radius: 18px; box-shadow: 0 4px 32px rgba(0,0,0,0.10); text-align: center; max-width: 600px; width: 100%;">
-        <h1 style="color: #fff; font-size: 2.1rem; font-weight: 700; margin-bottom: 1rem;">Find Properties to Buy</h1>
-        <p style="color: #f3f3f3; font-size: 1.1rem; margin-bottom: 1.5rem;">Browse verified listings and discover your dream home or investment property with Ghar4Rent.</p>
-        <a href="post-property.html" class="cta-btn" style="background: #1976d2; color: #fff; padding: 0.8rem 2rem; border-radius: 8px; font-size: 1.1rem; font-weight: 600; text-decoration: none; box-shadow: 0 2px 8px rgba(25,118,210,0.15); transition: background 0.2s;">Post Property Free</a>
+    <section class="hero hero-buy">
+      <div class="hero-overlay">
+        <h1 class="hero-title">Find Properties to Buy</h1>
+        <p class="hero-subtitle">Browse verified listings and discover your dream home or investment property with Ghar4Rent.</p>
+        <a href="post-property.html" class="cta-btn hero-cta-btn">Post Property Free</a>
       </div>
     </section>
     <!-- Testimonials & Trust Badges Section -->
@@ -148,71 +148,6 @@
 
     <!-- Platform Benefits Section -->
     <!-- ...existing code... -->
-    <script>
-    function filterBuyCards() {
-        const bedroom = document.getElementById('buyBedroomFilter').value;
-        const type = document.getElementById('buyTypeFilter').value;
-        const furnishing = document.getElementById('buyFurnishingFilter').value;
-        const location = document.getElementById('buyLocationFilter').value;
-        const minPrice = parseInt(document.getElementById('buyMinPrice').value);
-        const maxPrice = parseInt(document.getElementById('buyMaxPrice').value);
-        let filtered = buyProperties.filter(p => {
-            const matchesBedroom = bedroom === 'all' || p.bedrooms === bedroom;
-            const matchesType = type === 'all' || p.type === type;
-            const matchesFurnishing = furnishing === 'all' || p.furnishing === furnishing;
-            const matchesLocation = location === 'all' || p.location.includes(location);
-            const matchesMinPrice = isNaN(minPrice) || p.price >= minPrice;
-            const matchesMaxPrice = isNaN(maxPrice) || p.price <= maxPrice;
-            return matchesBedroom && matchesType && matchesFurnishing && matchesLocation && matchesMinPrice && matchesMaxPrice;
-        });
-        renderBuyCards(filtered);
-    }
-    const buyProperties = [
-    {type:'apartment', bedrooms:'3BHK', furnishing:'semi', location:'Andheri, Mumbai', price:25000000, title:'Luxury Apartment in Mumbai', details:'3BHK, 1800 sqft, Semi Furnished, Pool, Gym, Parking', img:'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80'},
-    {type:'villa', bedrooms:'4BHK', furnishing:'full', location:'Whitefield, Bangalore', price:38000000, title:'Modern Villa in Bangalore', details:'4BHK, 3200 sqft, Fully Furnished, Garden, Security', img:'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80'},
-    {type:'penthouse', bedrooms:'4+BHK', furnishing:'full', location:'Golf Course Road, Gurgaon', price:42000000, title:'Penthouse in Gurgaon', details:'5BHK, 3500 sqft, Fully Furnished, City View', img:'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80'},
-    {type:'apartment', bedrooms:'2BHK', furnishing:'semi', location:'OMR, Chennai', price:16000000, title:'Premium Apartment in Chennai', details:'2BHK, 1500 sqft, Semi Furnished, Pool, Gym', img:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=400&q=80'},
-    {type:'apartment', bedrooms:'2BHK', furnishing:'none', location:'Koregaon Park, Pune', price:11000000, title:'2 BHK Flat in Pune', details:'2BHK, 1100 sqft, Unfurnished, Balcony', img:'https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=400&q=80'},
-    {type:'independent', bedrooms:'3BHK', furnishing:'full', location:'Gachibowli, Hyderabad', price:22000000, title:'Independent House in Hyderabad', details:'3BHK, 2000 sqft, Fully Furnished, East Facing', img:'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80'},
-    {type:'villa', bedrooms:'4BHK', furnishing:'semi', location:'Bannerghatta, Bangalore', price:22000000, title:'Green Meadows', details:'4BHK, 3200 sqft, Semi Furnished, Villas, Clubhouse', img:'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80'},
-    {type:'apartment', bedrooms:'1RK', furnishing:'semi', location:'Thane, Mumbai', price:11000000, title:'Skyline Towers', details:'1RK, 600 sqft, Semi Furnished, Smart Homes, Clubhouse', img:'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80'},
-    {type:'apartment', bedrooms:'3BHK', furnishing:'none', location:'Dwarka, Delhi', price:18000000, title:'Premium Apartment in Delhi', details:'3BHK, 1600 sqft, Unfurnished, Pool, Gym', img:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=400&q=80'},
-    {type:'villa', bedrooms:'4BHK', furnishing:'full', location:'Jubilee Hills, Hyderabad', price:35000000, title:'Villa in Jubilee Hills', details:'4BHK, 4000 sqft, Fully Furnished, Garden', img:'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80'},
-    {type:'apartment', bedrooms:'2BHK', furnishing:'semi', location:'Hitech City, Hyderabad', price:17000000, title:'Apartment in Hitech City', details:'2BHK, 1200 sqft, Semi Furnished, Pool', img:'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80'},
-    {type:'independent', bedrooms:'3BHK', furnishing:'none', location:'Banjara Hills, Hyderabad', price:21000000, title:'House in Banjara Hills', details:'3BHK, 1800 sqft, Unfurnished, Parking', img:'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80'},
-    {type:'villa', bedrooms:'4+BHK', furnishing:'full', location:'Kondapur, Hyderabad', price:40000000, title:'Luxury Villa in Kondapur', details:'5BHK, 5000 sqft, Fully Furnished, Pool', img:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=400&q=80'},
-    {type:'apartment', bedrooms:'2BHK', furnishing:'semi', location:'Madhapur, Hyderabad', price:15000000, title:'Apartment in Madhapur', details:'2BHK, 1100 sqft, Semi Furnished, Gym', img:'https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=400&q=80'},
-    {type:'independent', bedrooms:'3BHK', furnishing:'full', location:'Manikonda, Hyderabad', price:23000000, title:'House in Manikonda', details:'3BHK, 2000 sqft, Fully Furnished, East Facing', img:'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80'},
-    {type:'apartment', bedrooms:'1RK', furnishing:'none', location:'Shamshabad, Hyderabad', price:9000000, title:'Studio in Shamshabad', details:'1RK, 500 sqft, Unfurnished, Near Airport', img:'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80'},
-    {type:'villa', bedrooms:'4BHK', furnishing:'semi', location:'Begumpet, Hyderabad', price:27000000, title:'Villa in Begumpet', details:'4BHK, 3500 sqft, Semi Furnished, Garden', img:'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80'},
-    {type:'apartment', bedrooms:'3BHK', furnishing:'full', location:'Secunderabad, Hyderabad', price:20000000, title:'Apartment in Secunderabad', details:'3BHK, 1600 sqft, Fully Furnished, Pool', img:'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80'},
-    {type:'independent', bedrooms:'2BHK', furnishing:'semi', location:'Gachibowli, Hyderabad', price:15000000, title:'House in Gachibowli', details:'2BHK, 1200 sqft, Semi Furnished, Parking', img:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=400&q=80'}
-    ];
-    function renderBuyCards(list) {
-        const container = document.getElementById('buyPropertyList');
-        container.innerHTML = '';
-        // Show filter summary above cards
-        const summary = document.createElement('div');
-        summary.className = 'filter-summary';
-        summary.style.cssText = 'grid-column:1/-1;text-align:left;font-size:1.15rem;font-weight:600;margin-bottom:10px;color:#263238;padding-left:4px;';
-        summary.innerHTML = `<strong>Showing ${list.length} properties</strong>`;
-        container.appendChild(summary);
-        if (list.length === 0) {
-            const noResults = document.createElement('p');
-            noResults.className = 'no-results';
-            noResults.textContent = 'No properties found. Try changing your filters.';
-            container.appendChild(noResults);
-            return;
-        }
-        list.forEach(prop => {
-            const card = document.createElement('div');
-            card.className = 'property-card';
-            card.innerHTML = `<img src='${prop.img}' alt='${prop.title}' class='property-img'><h3>${prop.title}</h3><p class='location'>${prop.location}</p><p class='price'>₹${(prop.price/100000).toFixed(2)} Lakh</p><p>${prop.details}</p>`;
-            container.appendChild(card);
-        });
-    }
-    document.addEventListener('DOMContentLoaded', filterBuyCards);
-    </script>
     <footer data-aos="fade-up">
             <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-start;">
                 <div style="flex:2;min-width:220px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;">
@@ -241,11 +176,12 @@
             </div>
             <div style="margin-top:24px;font-size:0.98em;color:#e3eafc;">&copy; 2025 Ghar4Rent. All rights reserved.</div>
     </footer>
+    <button id="goToTopBtn" title="Go to top">&uarr;</button>
+    <script src="properties.js"></script>
     <script src="buy.js"></script>
-        <script src="main.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-        <script>
-            if (window.AOS) AOS.init({ once: true });
-        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        if (window.AOS) AOS.init({ once: true });
+    </script>
 </body>
 </html>

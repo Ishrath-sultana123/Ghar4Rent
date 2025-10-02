@@ -1,41 +1,6 @@
-// Demo property data
-const properties = [
-    {
-        id: 1,
-        title: "2 BHK Apartment in Andheri",
-        location: "Andheri, Mumbai",
-        type: "rent",
-        price: "₹35,000/month",
-        details: "Spacious flat with amenities, near metro station."
-    },
-    {
-        id: 2,
-        title: "3 BHK Villa in Whitefield",
-        location: "Whitefield, Bangalore",
-        type: "buy",
-        price: "₹1.2 Crore",
-        details: "Luxury villa with garden, gated community."
-    },
-    {
-        id: 3,
-        title: "1 BHK Studio in Hinjewadi",
-        location: "Hinjewadi, Pune",
-        type: "rent",
-        price: "₹18,000/month",
-        details: "Ideal for singles, close to IT park."
-    },
-    {
-        id: 4,
-        title: "4 BHK Penthouse in Golf Course Road",
-        location: "Golf Course Road, Gurgaon",
-        type: "buy",
-        price: "₹3.5 Crore",
-        details: "Premium penthouse with city view."
-    }
-];
-
-function renderProperties(list) {
-    const container = document.getElementById('properties');
+function renderRentCards(list) {
+    const container = document.getElementById('rentPropertyList');
+    if (!container) return;
     container.innerHTML = '';
     if (list.length === 0) {
         container.innerHTML = '<p>No properties found.</p>';
@@ -44,36 +9,87 @@ function renderProperties(list) {
     list.forEach(prop => {
         const card = document.createElement('div');
         card.className = 'property-card';
-        card.innerHTML = `
-            <h3><a href='property-details.html'>${prop.title}</a></h3>
-            <div class="location">${prop.location}</div>
-            <div class="type">${prop.type === 'rent' ? 'For Rent' : 'For Purchase'}</div>
-            <div class="price">${prop.price}</div>
-            <div class="details">${prop.details}</div>
-        `;
+        card.innerHTML = `<a href="property-details.html?id=${prop.id}"><img src='${prop.img}' alt='${prop.title}' class='property-img'><h3>${prop.title}</h3><p class='location'>${prop.location}</p><p class='price'>₹${prop.price.toLocaleString()}/month</p><p>${prop.details}</p></a>`;
         container.appendChild(card);
     });
 }
 
-function filterListings() {
-    const type = document.getElementById('typeFilter').value;
-    const location = document.getElementById('locationFilter').value.toLowerCase();
-    let filtered = properties.filter(p => {
-        const matchesType = type === 'all' || p.type === type;
-        const matchesLocation = location === '' || p.location.toLowerCase().includes(location);
-        return matchesType && matchesLocation;
+function renderBuyCards(list) {
+    const container = document.getElementById('buyPropertyList');
+    if (!container) return;
+    container.innerHTML = '';
+    if (list.length === 0) {
+        container.innerHTML = '<p>No properties found.</p>';
+        return;
+    }
+    list.forEach(prop => {
+        const card = document.createElement('div');
+        card.className = 'property-card';
+        card.innerHTML = `<a href="property-details.html?id=${prop.id}"><img src='${prop.img}' alt='${prop.title}' class='property-img'><h3>${prop.title}</h3><p class='location'>${prop.location}</p><p class='price'>₹${(prop.price/100000).toFixed(2)} Lakh</p><p>${prop.details}</p></a>`;
+        container.appendChild(card);
     });
-    renderProperties(filtered);
 }
 
-document.getElementById('typeFilter').addEventListener('change', filterListings);
-document.getElementById('locationFilter').addEventListener('input', filterListings);
+function renderNewProjects(list) {
+    const container = document.getElementById('newProjectsList');
+    if (!container) return;
+    container.innerHTML = '';
+    if (list.length === 0) {
+        container.innerHTML = '<p>No new projects found.</p>';
+        return;
+    }
+    list.forEach(prop => {
+        const card = document.createElement('div');
+        card.className = 'property-card';
+        card.innerHTML = `<a href="property-details.html?id=${prop.id}"><img src='${prop.img}' alt='${prop.title}' class='property-img'><h3>${prop.title}</h3><p class='location'>${prop.location}</p><p class='price'>${prop.price.toLocaleString()}</p><p>${prop.details}</p></a>`;
+        container.appendChild(card);
+    });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderProperties(properties);
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        document.getElementById('contactResponse').textContent = 'Thank you for contacting us! We will get back to you soon.';
-        this.reset();
+    // Check if properties array exists
+    if (typeof properties !== 'undefined') {
+        const rentProperties = properties.filter(p => p.status === 'rent');
+        const buyProperties = properties.filter(p => p.status === 'buy');
+        const newProjects = properties.slice(-3); // Get last 3 properties as "new"
+
+        // Check if the containers exist before rendering
+        if (document.getElementById('rentPropertyList')) {
+            renderRentCards(rentProperties.slice(0,3));
+        }
+        if (document.getElementById('buyPropertyList')) {
+            renderBuyCards(buyProperties.slice(0,3));
+        }
+        if (document.getElementById('newProjectsList')) {
+            renderNewProjects(newProjects);
+        }
+    }
+
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const contactResponse = document.getElementById('contactResponse');
+            if(contactResponse) {
+                contactResponse.textContent = 'Thank you for contacting us! We will get back to you soon.';
+            }
+            this.reset();
+        });
+    }
+
+    // Go to top button logic
+    const goToTopBtn = document.getElementById("goToTopBtn");
+
+    window.onscroll = function() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            goToTopBtn.style.display = "block";
+        } else {
+            goToTopBtn.style.display = "none";
+        }
+    };
+
+    goToTopBtn.addEventListener('click', () => {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     });
 });
